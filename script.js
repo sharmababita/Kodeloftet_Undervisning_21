@@ -57,3 +57,27 @@ async function displayAllFacts() {
 };
 
 displayAllFacts();
+
+const newFActButton = document.querySelector("#newFactButton");
+newFactButton.addEventListener("click", async function () {
+console.log("knapp trykket?");
+
+const catFacts = await fetchCatFacts();
+const fact = catFacts.data;
+const showFact = document.querySelector("#showFact");
+showFact.textContent = fact.fact;
+});
+
+
+//
+//
+
+async function pokemonCard() {
+  const response  = await fetch ("https://pokeapi.co/api/v2/pokemon/ditto");
+
+  const data = await response.json();
+  console.log(data);
+  console.log(data.stats[0].base_stat + data.stats[0].stat.name);
+}
+
+pokemonCard();
